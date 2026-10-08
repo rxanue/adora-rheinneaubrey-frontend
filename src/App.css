@@ -1,0 +1,805 @@
+/* =========================================================
+   MODERN PRODUCT MANAGEMENT UI
+   ========================================================= */
+ 
+* {
+    box-sizing: border-box;
+}
+ 
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-light: #eef2ff;
+ 
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+ 
+    --text: #111827;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+ 
+    --background: #f8fafc;
+    --card: #ffffff;
+    --border: #e5e7eb;
+ 
+    --navbar: #111827;
+ 
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+ 
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 8px 25px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 15px 40px rgba(15, 23, 42, 0.12);
+}
+ 
+html {
+    scroll-behavior: smooth;
+}
+ 
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+ 
+    background: var(--background);
+    color: var(--text);
+ 
+    line-height: 1.6;
+}
+ 
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+ 
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+ 
+button {
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+ 
+button:active {
+    transform: scale(0.98);
+}
+ 
+::selection {
+    background: var(--primary);
+    color: white;
+}
+ 
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+ 
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+ 
+    min-height: 70px;
+ 
+    background: rgba(17, 24, 39, 0.96);
+ 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+ 
+    color: white;
+ 
+    padding: 0 35px;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+ 
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08);
+}
+ 
+.navbar h2 {
+    margin: 0;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+}
+ 
+.navbar h2::before {
+    content: "◆";
+    color: #818cf8;
+    font-size: 13px;
+    margin-right: 10px;
+}
+ 
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+ 
+.role {
+    background: rgba(99, 102, 241, 0.18);
+    color: #c7d2fe;
+ 
+    padding: 6px 12px;
+ 
+    border: 1px solid rgba(129, 140, 248, 0.25);
+ 
+    border-radius: 999px;
+ 
+    font-size: 13px;
+    font-weight: 600;
+}
+ 
+/* Logout */
+ 
+.navbar button {
+    background: rgba(255, 255, 255, 0.08);
+ 
+    color: #f9fafb;
+ 
+    border: 1px solid rgba(255, 255, 255, 0.12);
+ 
+    padding: 8px 15px;
+ 
+    border-radius: 8px;
+ 
+    font-size: 14px;
+    font-weight: 600;
+}
+ 
+.navbar button:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+ 
+/* =========================================================
+   LOGIN
+   ========================================================= */
+ 
+.login-container {
+    min-height: 100vh;
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    padding: 25px;
+ 
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(79, 70, 229, 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            rgba(99, 102, 241, 0.10),
+            transparent 35%
+        ),
+        #f8fafc;
+}
+ 
+.login-card {
+    position: relative;
+ 
+    background: rgba(255, 255, 255, 0.95);
+ 
+    width: 420px;
+    max-width: 100%;
+ 
+    padding: 40px;
+ 
+    border-radius: 20px;
+ 
+    border: 1px solid rgba(255, 255, 255, 0.8);
+ 
+    box-shadow: var(--shadow-lg);
+ 
+    animation: loginAppear 0.5s ease;
+}
+ 
+@keyframes loginAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+.login-card::before {
+    content: "";
+ 
+    position: absolute;
+ 
+    top: 0;
+    left: 50%;
+ 
+    transform: translateX(-50%);
+ 
+    width: 70px;
+    height: 4px;
+ 
+    background: var(--primary);
+ 
+    border-radius: 0 0 10px 10px;
+}
+ 
+.login-card h1 {
+    text-align: center;
+ 
+    margin: 0 0 8px;
+ 
+    font-size: 28px;
+    font-weight: 750;
+    color: black;
+    letter-spacing: -0.8px;
+}
+ 
+.login-card h2 {
+    text-align: center;
+ 
+    margin: 0 0 30px;
+ 
+    color: var(--text-secondary);
+ 
+    font-size: 15px;
+    font-weight: 400;
+}
+ 
+/* =========================================================
+   FORMS
+   ========================================================= */
+ 
+.form-group {
+    margin-bottom: 20px;
+}
+ 
+.form-group label {
+    display: block;
+ 
+    margin-bottom: 8px;
+ 
+    color: #374151;
+ 
+    font-size: 14px;
+    font-weight: 600;
+}
+ 
+.form-group input,
+.form-group textarea {
+    width: 100%;
+ 
+    padding: 12px 14px;
+ 
+    background: #ffffff;
+ 
+    color: var(--text);
+ 
+    border: 1px solid var(--border);
+ 
+    border-radius: 10px;
+ 
+    outline: none;
+ 
+    font-size: 14px;
+ 
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+ 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af;
+}
+ 
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: #c7d2fe;
+}
+ 
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+ 
+    background: #fff;
+ 
+    box-shadow:
+        0 0 0 4px rgba(79, 70, 229, 0.10);
+}
+ 
+.form-group textarea {
+    min-height: 120px;
+ 
+    resize: vertical;
+}
+ 
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+ 
+.login-card button,
+.product-form button {
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        #6366f1
+    );
+ 
+    color: white;
+ 
+    border: none;
+ 
+    padding: 11px 17px;
+ 
+    border-radius: 9px;
+ 
+    font-size: 14px;
+    font-weight: 600;
+ 
+    box-shadow:
+        0 4px 10px rgba(79, 70, 229, 0.20);
+}
+ 
+.login-card button {
+    width: 100%;
+ 
+    padding: 13px;
+ 
+    margin-top: 5px;
+}
+ 
+.login-card button:hover,
+.product-form button:hover {
+    background: linear-gradient(
+        135deg,
+        var(--primary-hover),
+        #4f46e5
+    );
+ 
+    box-shadow:
+        0 7px 18px rgba(79, 70, 229, 0.25);
+ 
+    transform: translateY(-1px);
+}
+ 
+/* =========================================================
+   PRODUCTS PAGE
+   ========================================================= */
+ 
+.products-container {
+    width: 100%;
+    max-width: 1400px;
+ 
+    margin: 0 auto;
+ 
+    padding: 40px;
+}
+ 
+.page-header {
+    margin-bottom: 28px;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.page-header h1 {
+    margin: 0;
+ 
+    font-size: 30px;
+    color: black;
+    font-weight: 750;
+ 
+    letter-spacing: -0.8px;
+}
+ 
+.page-header p {
+    margin: 5px 0 0;
+ 
+    color: var(--text-secondary);
+ 
+    font-size: 14px;
+}
+ 
+/* =========================================================
+   PRODUCT FORM
+   ========================================================= */
+ 
+.product-form {
+    background: var(--card);
+ 
+    padding: 28px;
+ 
+    margin-bottom: 30px;
+ 
+    border-radius: var(--radius-lg);
+ 
+    border: 1px solid var(--border);
+ 
+    box-shadow: var(--shadow-sm);
+ 
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+ 
+.product-form:hover {
+    box-shadow: var(--shadow-md);
+}
+ 
+.product-form h2 {
+    margin: 0 0 22px;
+ 
+    font-size: 19px;
+    color: black;
+    font-weight: 700;
+}
+ 
+/* =========================================================
+   FORM BUTTONS
+   ========================================================= */
+ 
+.form-buttons {
+    display: flex;
+ 
+    gap: 10px;
+ 
+    margin-top: 5px;
+}
+ 
+.cancel-button {
+    background: #f3f4f6 !important;
+ 
+    color: #4b5563 !important;
+ 
+    border: 1px solid var(--border) !important;
+ 
+    box-shadow: none !important;
+}
+ 
+.cancel-button:hover {
+    background: #e5e7eb !important;
+ 
+    color: #111827 !important;
+}
+ 
+/* =========================================================
+   TABLE CONTAINER
+   ========================================================= */
+ 
+.product-table-container {
+    background: var(--card);
+ 
+    padding: 0;
+ 
+    border-radius: var(--radius-lg);
+ 
+    border: 1px solid var(--border);
+ 
+    overflow: hidden;
+ 
+    box-shadow: var(--shadow-sm);
+}
+ 
+.product-table-container h2 {
+    margin: 0;
+ 
+    padding: 22px 25px;
+ 
+    border-bottom: 1px solid var(--border);
+ 
+    font-size: 18px;
+}
+ 
+/* =========================================================
+   TABLE
+   ========================================================= */
+ 
+table {
+    width: 100%;
+ 
+    border-collapse: collapse;
+}
+ 
+th,
+td {
+    padding: 16px 20px;
+ 
+    border-bottom: 1px solid #f0f0f0;
+ 
+    text-align: left;
+ 
+    font-size: 14px;
+}
+ 
+th {
+    background: #f8fafc;
+ 
+    color: #6b7280;
+ 
+    font-size: 12px;
+ 
+    font-weight: 700;
+ 
+    text-transform: uppercase;
+ 
+    letter-spacing: 0.5px;
+}
+ 
+td {
+    color: #374151;
+}
+ 
+tbody tr {
+    transition: background 0.15s ease;
+}
+ 
+tbody tr:hover {
+    background: #f8faff;
+}
+ 
+tbody tr:last-child td {
+    border-bottom: none;
+}
+ 
+/* =========================================================
+   PRODUCT NAME
+   ========================================================= */
+ 
+td:first-child {
+    color: #111827;
+ 
+    font-weight: 600;
+}
+ 
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+ 
+.edit-button,
+.delete-button {
+    border: none;
+ 
+    padding: 8px 12px;
+ 
+    border-radius: 8px;
+ 
+    font-size: 13px;
+ 
+    font-weight: 600;
+ 
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+ 
+.edit-button {
+    background: #fff7ed;
+ 
+    color: #c2410c;
+ 
+    margin-right: 6px;
+}
+ 
+.edit-button:hover {
+    background: #ffedd5;
+ 
+    transform: translateY(-1px);
+}
+ 
+.delete-button {
+    background: #fef2f2;
+ 
+    color: #dc2626;
+}
+ 
+.delete-button:hover {
+    background: #fee2e2;
+ 
+    transform: translateY(-1px);
+}
+ 
+/* =========================================================
+   ERROR MESSAGE
+   ========================================================= */
+ 
+.error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+ 
+    background: #fef2f2;
+ 
+    color: #b91c1c;
+ 
+    padding: 12px 15px;
+ 
+    margin-bottom: 18px;
+ 
+    border: 1px solid #fecaca;
+ 
+    border-radius: 10px;
+ 
+    font-size: 14px;
+}
+ 
+.error::before {
+    content: "!";
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    width: 22px;
+    height: 22px;
+ 
+    background: #fee2e2;
+ 
+    color: #dc2626;
+ 
+    border-radius: 50%;
+ 
+    font-size: 12px;
+ 
+    font-weight: 800;
+}
+ 
+/* =========================================================
+   LOADING / EMPTY STATE
+   ========================================================= */
+ 
+.loading,
+.empty-state {
+    padding: 50px 20px;
+ 
+    text-align: center;
+ 
+    color: var(--text-secondary);
+ 
+    font-size: 14px;
+}
+ 
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+ 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+ 
+    border-radius: 999px;
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+ 
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+ 
+@media (max-width: 900px) {
+    .products-container {
+        padding: 25px;
+    }
+ 
+    .page-header h1 {
+        font-size: 26px;
+    }
+ 
+    th,
+    td {
+        padding: 13px 15px;
+    }
+}
+ 
+@media (max-width: 650px) {
+    .navbar {
+        padding: 0 18px;
+ 
+        min-height: 65px;
+    }
+ 
+    .navbar h2 {
+        font-size: 17px;
+    }
+ 
+    .navbar h2::before {
+        display: none;
+    }
+ 
+    .navbar-right {
+        gap: 8px;
+    }
+ 
+    .role {
+        display: none;
+    }
+ 
+    .navbar button {
+        padding: 7px 11px;
+ 
+        font-size: 12px;
+    }
+ 
+    .products-container {
+        padding: 20px 15px;
+    }
+ 
+    .page-header {
+        display: block;
+    }
+ 
+    .page-header h1 {
+        font-size: 24px;
+    }
+ 
+    .product-form {
+        padding: 20px;
+    }
+ 
+    .product-table-container {
+        overflow-x: auto;
+    }
+ 
+    table {
+        min-width: 650px;
+    }
+ 
+    .login-card {
+        padding: 30px 22px;
+ 
+        border-radius: 16px;
+    }
+}
+ 
+@media (max-width: 450px) {
+    .login-container {
+        padding: 15px;
+    }
+ 
+    .login-card {
+        padding: 28px 20px;
+    }
+ 
+    .form-buttons {
+        flex-direction: column;
+    }
+ 
+    .form-buttons button {
+        width: 100%;
+    }
+}
